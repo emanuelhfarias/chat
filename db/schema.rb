@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_033647) do
 
   create_table "chats", force: :cascade do |t|
     t.text "message"
-    t.integer "employee_id", null: false
-    t.integer "talent_id", null: false
+    t.integer "employee_id"
+    t.integer "talent_id"
     t.string "sender_type"
     t.integer "company_id", null: false
     t.datetime "created_at", precision: 6, null: false

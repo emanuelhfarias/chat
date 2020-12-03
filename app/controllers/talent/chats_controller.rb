@@ -14,10 +14,9 @@ class Talent::ChatsController < Talent::ApplicationController
   def create
     return head :bad_request if chat_blocked?
 
-    Chat.create(
+    Chat.create!(
       message: params[:message],
       talent: current_user,
-      employee: Employee.order('RANDOM()').first,
       sender_type: 'talent',
       company_id: params[:id]
     )
