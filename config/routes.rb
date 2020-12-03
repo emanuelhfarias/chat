@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     post 'chats/:id', to: 'chats#create'
     get 'chats/:id', to: 'chats#show'
     post 'chats/:id/read', to: 'chats#read'
-    post 'chats/:id/block', to: 'chats#block'
     post 'chats/:id/execute', to: 'chats#execute'
   end
 end

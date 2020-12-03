@@ -12,6 +12,8 @@ class Employee::ChatsController < Employee::ApplicationController
   end
 
   def create
+    return head :bad_request if chat_blocked?
+
     Chat.create(
       message: params[:message],
       talent_id: params[:id],
@@ -29,9 +31,33 @@ class Employee::ChatsController < Employee::ApplicationController
     head :ok
   end
 
-  def block
+  def execute
+    case params[:action]
+    when 'block'
+      block
+    when 'offer'
+      offer
+    end
   end
 
-  def execute
+  private
+
+  def chat_blocked?
+    Chat.exists?(block: true, talent_id: params[:id], company: current_user.company)
+  end
+
+  def block
+    Chat.create(
+      talent_id: params[:id],
+      employee: current_user,
+      sender_type: 'employee',
+      company: current_user.company,
+      block: true
+    )
+
+    head :ok
+  end
+
+  def offer
   end
 end

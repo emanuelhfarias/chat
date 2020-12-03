@@ -12,6 +12,8 @@ class Talent::ChatsController < Talent::ApplicationController
   end
 
   def create
+    return head :bad_request if chat_blocked?
+
     Chat.create(
       message: params[:message],
       talent: current_user,
@@ -27,5 +29,11 @@ class Talent::ChatsController < Talent::ApplicationController
     Chat.where(talent: current_user, company_id: params[:id], sender_type: 'employee').update(read: true)
 
     head :ok
+  end
+
+  private
+
+  def chat_blocked?
+    Chat.exists?(block: true, talent: current_user, company_id: params[:id])
   end
 end
