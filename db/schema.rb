@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_004202) do
+ActiveRecord::Schema.define(version: 2020_12_03_004440) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.integer "company_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_employees_on_company_id"
   end
 
   create_table "talents", force: :cascade do |t|
@@ -24,4 +32,5 @@ ActiveRecord::Schema.define(version: 2020_12_03_004202) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "employees", "companies"
 end
