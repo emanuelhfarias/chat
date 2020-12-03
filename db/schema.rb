@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_013417) do
+ActiveRecord::Schema.define(version: 2020_12_03_031034) do
 
   create_table "chats", force: :cascade do |t|
     t.text "message"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_013417) do
     t.integer "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "read", default: false
     t.index ["company_id"], name: "index_chats_on_company_id"
     t.index ["employee_id"], name: "index_chats_on_employee_id"
     t.index ["talent_id"], name: "index_chats_on_talent_id"
