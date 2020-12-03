@@ -22,4 +22,10 @@ class Talent::ChatsController < Talent::ApplicationController
 
     head :created
   end
+
+  def read
+    Chat.where(talent: current_user, company_id: params[:id], sender_type: 'employee').update(read: true)
+
+    head :ok
+  end
 end

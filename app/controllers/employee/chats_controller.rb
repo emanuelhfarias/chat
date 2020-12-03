@@ -23,6 +23,12 @@ class Employee::ChatsController < Employee::ApplicationController
     head :created
   end
 
+  def read
+    Chat.where(talent_id: params[:id], company: current_user.company, sender_type: 'talent').update(read: true)
+
+    head :ok
+  end
+
   def block
   end
 
