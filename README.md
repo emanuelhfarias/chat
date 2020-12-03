@@ -28,3 +28,5 @@ Example call: `localhost:3000/talent/chats`
 | POST   | /employee/chats/:talent_id/read    |                   | read messages from the chat |
 | POST   | /employee/chats/:talent_id/execute | {"job": "block"}  | block a chat                |
 | POST   | /employee/chats/:talent_id/execute | {"job": "offer"}  | send an offer               |
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Chat%20API&uri=https%3A%2F%2Fraw.githubusercontent.com%2Femanuelhfarias%2Fchat%2Fmaster%2Frequests.json%3Ftoken%3DAATJ7MLCBRGGQAJF5AUOLCK72H6SG)
