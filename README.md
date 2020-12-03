@@ -35,5 +35,6 @@ Example call: `localhost:3000/talent/chats`
 ![Schema](schema.png "Schema")
 
 ### Improvements
+* add tests
 * remove similar queries  
 * use resources on `routes.rb` instead of list all routes  
