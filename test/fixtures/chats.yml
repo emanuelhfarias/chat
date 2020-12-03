@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyText
+  employee: one
+  talent: one
+  sender_type: MyString
+  company: one
+
+two:
+  message: MyText
+  employee: two
+  talent: two
+  sender_type: MyString
+  company: two

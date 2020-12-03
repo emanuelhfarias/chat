@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_004440) do
+ActiveRecord::Schema.define(version: 2020_12_03_013417) do
+
+  create_table "chats", force: :cascade do |t|
+    t.text "message"
+    t.integer "employee_id", null: false
+    t.integer "talent_id", null: false
+    t.string "sender_type"
+    t.integer "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_chats_on_company_id"
+    t.index ["employee_id"], name: "index_chats_on_employee_id"
+    t.index ["talent_id"], name: "index_chats_on_talent_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -32,5 +45,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_004440) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "chats", "companies"
+  add_foreign_key "chats", "employees"
+  add_foreign_key "chats", "talents"
   add_foreign_key "employees", "companies"
 end
