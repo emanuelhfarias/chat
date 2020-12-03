@@ -32,7 +32,7 @@ class Employee::ChatsController < Employee::ApplicationController
   end
 
   def execute
-    case params[:action]
+    case params[:job]
     when 'block'
       block
     when 'offer'
@@ -59,5 +59,14 @@ class Employee::ChatsController < Employee::ApplicationController
   end
 
   def offer
+    Chat.create(
+      message: 'Special offer!',
+      talent_id: params[:id],
+      employee: current_user,
+      sender_type: 'employee',
+      company: current_user.company
+    )
+
+    head :created
   end
 end
